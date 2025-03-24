@@ -17,5 +17,5 @@ window.onload = (event) => {
 
     iframe.width = videoInitWidth * scaleMultiplier;
     iframe.height = videoInitHeight * scaleMultiplier;
-
+    alert("scale Multiplication done by " + scaleMultiplier + ".");
   };
