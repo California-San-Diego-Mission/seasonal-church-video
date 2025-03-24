@@ -1,9 +1,9 @@
 window.onload = (event) => {
-    iframe = document.getElementById("mainVideo");
+    let videoElement = document.getElementById("mainVideo");
     let viewportWidth = window.innerWidth;//example, 100
     let viewportHeight = window.innerHeight;//example, 100
-    let videoInitWidth = iframe.offsetWidth;//example, 50
-    let videoInitHeight = iframe.offsetHeight;//example, 20
+    let videoInitWidth = videoElement.offsetWidth;//example, 50
+    let videoInitHeight = videoElement.offsetHeight;//example, 20
     let widthRatio = videoInitWidth/viewportWidth;//example, 50/100 = 0.5
     let heightRatio = videoInitHeight/viewportHeight;//example, 20/100 = 0.2
 
@@ -15,7 +15,7 @@ window.onload = (event) => {
         scaleMultiplier = 1 / heightRatio;
     }
 
-    iframe.width = videoInitWidth * scaleMultiplier;
-    iframe.height = videoInitHeight * scaleMultiplier;
+    videoElement.width = videoInitWidth * scaleMultiplier;
+    videoElement.height = videoInitHeight * scaleMultiplier;
     alert("scale Multiplication done by " + scaleMultiplier + ".");
   };
