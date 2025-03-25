@@ -2,18 +2,7 @@
 html, body {
     height: 100%;
     margin: 0;
-  }
-
-  /* Ensure the container for the iframe is set to fill the screen */
-  .iframe-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Ensure iframe is behind any other content */
-  }
+  } 
 
   /* Style the iframe to ensure it takes up the entire container */
   iframe {
