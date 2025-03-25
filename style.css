@@ -9,8 +9,8 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    width: 90vw; /* Full viewport width */
+    height: 90vh; /* Full viewport height */
     border: none;
     object-fit: cover; /* Ensures the video will cover the entire iframe space */
   }
