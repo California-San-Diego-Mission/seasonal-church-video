@@ -7,57 +7,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FChurchofJesusChrist%2Fvideos%2F957540022822791%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-    <script src="https://players.brightcove.net/videojs/7.10.0/video.js"></script>
+    <iframe src="https://drive.google.com/file/d/1QR2TA9y7o6mXedLjIYNC31pVsoLqgXxe/preview" width="640" height="480" allow="autoplay"></iframe>
     <script>
-       window.onload = function() {
-            const iframe = document.getElementById('mainVideo');
-            const player = iframe.contentWindow;
+    //    window.onload = function() {
+    //         const iframe = document.getElementById('mainVideo');
+    //         const player = iframe.contentWindow;
 
-            // Function to check if the video is done
-            function checkIfDone() {
-                // Send a message to the iframe to get the current time and duration
-                player.postMessage({
-                    "event": "getVideoData",
-                    "data": {
-                        "eventName": "getCurrentTime"
-                    }
-                }, "*");
+    //         // Function to check if the video is done
+    //         function checkIfDone() {
+    //             // Send a message to the iframe to get the current time and duration
+    //             player.postMessage({
+    //                 "event": "getVideoData",
+    //                 "data": {
+    //                     "eventName": "getCurrentTime"
+    //                 }
+    //             }, "*");
 
-                player.postMessage({
-                    "event": "getVideoData",
-                    "data": {
-                        "eventName": "getDuration"
-                    }
-                }, "*");
-            }
+    //             player.postMessage({
+    //                 "event": "getVideoData",
+    //                 "data": {
+    //                     "eventName": "getDuration"
+    //                 }
+    //             }, "*");
+    //         }
 
-            // Listen for the response from the iframe
-            window.addEventListener("message", function(event) {
-                // Check if the event came from the correct source
-                if (event.origin !== "https://players.brightcove.net") return;
+    //         // Listen for the response from the iframe
+    //         window.addEventListener("message", function(event) {
+    //             // Check if the event came from the correct source
+    //             if (event.origin !== "https://players.brightcove.net") return;
 
-                // Event data from iframe with current time and duration
-                const data = event.data;
+    //             // Event data from iframe with current time and duration
+    //             const data = event.data;
 
-                // Check if the current time equals the duration (video ended)
-                if (data.eventName === "getCurrentTime") {
-                    currentTime = data.data.currentTime; // Current timestamp of the video
-                } 
-                if (data.eventName === "getDuration") {
-                    duration = data.data.duration; // Total duration of the video
-                }
+    //             // Check if the current time equals the duration (video ended)
+    //             if (data.eventName === "getCurrentTime") {
+    //                 currentTime = data.data.currentTime; // Current timestamp of the video
+    //             } 
+    //             if (data.eventName === "getDuration") {
+    //                 duration = data.data.duration; // Total duration of the video
+    //             }
 
-                // Check if currentTime equals duration, meaning the video is over
-                if (currentTime && duration && currentTime >= duration) {
-                    clearInterval(checkInterval); // Stop checking
-                    alert("Done");
-                }
-            });
+    //             // Check if currentTime equals duration, meaning the video is over
+    //             if (currentTime && duration && currentTime >= duration) {
+    //                 clearInterval(checkInterval); // Stop checking
+    //                 alert("Done");
+    //             }
+    //         });
 
-            // Check every 5 seconds
-            const checkInterval = setInterval(checkIfDone, 5000);
-        };
+    //         // Check every 5 seconds
+    //         const checkInterval = setInterval(checkIfDone, 5000);
+    //     };
     </script>
 </body>
 </html>
