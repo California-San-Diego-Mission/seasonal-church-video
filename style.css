@@ -1,5 +1,13 @@
-/* body {
-    color: #313131
-}
-
-# */
+/* Make sure body and html take full height and have no margin */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Make iframe take full width and height */
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover; /* Scale the content to fill the container */
+  }
