@@ -1,13 +1,23 @@
-/* Make sure body and html take full height and have no margin */
-html, body {
+ /* Reset body and html to fill the full viewport */
+ html, body {
     height: 100%;
     margin: 0;
   }
-  
-  /* Make iframe take full width and height */
-iframe {
+
+  /* Make the container for the iframe fill the entire viewport */
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Style the iframe to fill the container */
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border: none;
-    object-fit: cover; /* Scale the content to fill the container */
+    object-fit: cover; /* Ensures video covers the entire iframe area */
   }
