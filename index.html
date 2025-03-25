@@ -5,31 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seasonal Church Video</title>
     <link rel="stylesheet" href="style.css">
-    <script defer>
-        // Wait for the iframe to load and then initialize the player
-        window.onload = function() {
-        alert("script working");
-        var iframe = document.getElementById('myIframe');
-        var player;
-
-        // Check if the iframe is properly loaded
-        iframe.onload = function() {
-            alert("iframe loaded");
-            // Initialize the Brightcove player using the iframe's source
-            player = videojs(iframe);
-
-            // Listen for the 'ended' event (video completion)
-            player.on('ended', function() {
-            alert("The video has finished playing.");
-            });
-        };
-        };
-    </script>
 </head>
 <body>
     <!-- <div class="iframe-container"> -->
         <iframe src='//players.brightcove.net/1241706627001/default_default/index.html?videoId=6369849666112&autoplay=true' id="mainVideo" allow="autoplay; fullscreen"></iframe>
     <!-- <iframe src="https://www.youtube.com/watch?v=gosY-UrpHcA?autoplay=1" id="mainVideo" title="An Easter video" allow="autoplay"></iframe> -->
     <!-- </div> -->
+    <script src="https://players.brightcove.net/videojs/7.10.0/video.js"></script>
+    <script>
+       window.onload = function() {
+            const iframe = document.getElementById('mainVideo');
+            const player = iframe.contentWindow;
+
+            // Function to check if the video is done
+            function checkIfDone() {
+                // Send a message to the iframe to get the current time and duration
+                player.postMessage({
+                    "event": "getVideoData",
+                    "data": {
+                        "eventName": "getCurrentTime"
+                    }
+                }, "*");
+
+                player.postMessage({
+                    "event": "getVideoData",
+                    "data": {
+                        "eventName": "getDuration"
+                    }
+                }, "*");
+            }
+
+            // Listen for the response from the iframe
+            window.addEventListener("message", function(event) {
+                // Check if the event came from the correct source
+                if (event.origin !== "https://players.brightcove.net") return;
+
+                // Event data from iframe with current time and duration
+                const data = event.data;
+
+                // Check if the current time equals the duration (video ended)
+                if (data.eventName === "getCurrentTime") {
+                    currentTime = data.data.currentTime; // Current timestamp of the video
+                } 
+                if (data.eventName === "getDuration") {
+                    duration = data.data.duration; // Total duration of the video
+                }
+
+                // Check if currentTime equals duration, meaning the video is over
+                if (currentTime && duration && currentTime >= duration) {
+                    clearInterval(checkInterval); // Stop checking
+                    alert("Done");
+                }
+            });
+
+            // Check every 5 seconds
+            const checkInterval = setInterval(checkIfDone, 5000);
+        };
+    </script>
 </body>
 </html>
